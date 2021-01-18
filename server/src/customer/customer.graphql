@@ -1,0 +1,26 @@
+type Customer {
+  id: ID!
+  opId: ID
+  name: String
+  email: String
+}
+
+input CreateCustomerDto {
+  name: String!
+  email: String!
+}
+
+input UpdateCustomerDto {
+  name: String
+  email: String
+}
+
+type Mutation {
+  createCustomer(dto: CreateCustomerDto): Customer
+  updateCustomer(id: ID, dto: UpdateCustomerDto): Customer
+}
+
+type Query {
+  getCustomers: [Customer]
+  getCustomerById(id: String!): Customer
+}
