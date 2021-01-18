@@ -9,4 +9,10 @@ export class EnvVars {
 
   @IsString()
   readonly MONGO_URI: string;
+
+  @IsString()
+  readonly OP_MERCHANT_ID: string;
+
+  @IsString()
+  readonly OP_PRIVATE_KEY: string;
 }

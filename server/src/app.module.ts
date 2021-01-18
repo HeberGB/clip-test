@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { MongooseConfigService } from './config/mongoose-config.service';
 import { HealthController } from './health.controller';
 import { GraphQLModule } from '@nestjs/graphql';
+import { OpenpayModule } from './openpay/openpay.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { GraphQLModule } from '@nestjs/graphql';
     GraphQLModule.forRoot({
       typePaths: ['./**/*.graphql'],
     }),
+    OpenpayModule,
   ],
   controllers: [HealthController],
   providers: [],
