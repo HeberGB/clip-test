@@ -7,19 +7,14 @@ type Customer {
   email: String
 }
 
-input CreateCustomerDto {
+input CustomerDto {
   name: String!
   email: String!
 }
 
-input UpdateCustomerDto {
-  name: String
-  email: String
-}
-
 type Mutation {
-  createCustomer(dto: CreateCustomerDto): Customer
-  updateCustomer(id: ID, dto: UpdateCustomerDto): Customer
+  createCustomer(dto: CustomerDto): Customer
+  updateCustomer(id: ID, dto: CustomerDto): Customer
 }
 
 type Query {
