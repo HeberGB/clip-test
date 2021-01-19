@@ -31,4 +31,12 @@ export class CustomerService {
     await this.openpayService.updateOPCustomer(updated.opId, dto);
     return updated;
   }
+
+  async findAll(): Promise<Customer[]> {
+    return this.customerModel.find().exec();
+  }
+
+  async findOneById(id: string): Promise<Customer> {
+    return this.customerModel.findById(id).exec();
+  }
 }
