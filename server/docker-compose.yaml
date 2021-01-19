@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  server:
+    image: node:14.15.4-alpine3.10
+    container_name: clip_server
+    volumes:
+      - ./:/home/node/app/
+    working_dir: /home/node/app/
+    ports:
+      - "8003:8000"
+    command: /bin/sh -c "npm i && npm run start:dev"
+
+  mongo:
+    image: mongo:3.6.21-xenial
+    container_name: clip_mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: develop
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    volumes:
+      - clip:/data/db
+    ports:
+      - 27017:27017
+
+volumes:
+  clip:
