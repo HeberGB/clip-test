@@ -1,7 +1,12 @@
 import { useMutation } from "@apollo/client";
 import { FormEvent, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { CREATE_CUSTOMER, Customer, GET_CUSTOMERS } from "../api/cutomers";
+import {
+  CREATE_CUSTOMER,
+  Customer,
+  CustomerDto,
+  GET_CUSTOMERS,
+} from "../api/cutomers";
 import { useAPIError } from "../hooks/useAPIError";
 
 type Props = {
@@ -14,16 +19,11 @@ type Response = {
 };
 
 type Variables = {
-  dto: Dto;
-};
-
-type Dto = {
-  name: string;
-  email: string;
+  dto: CustomerDto;
 };
 
 export default function ModalNewCustomer({ onHide, show }: Props) {
-  const [dto, setDto] = useState<Dto>({ name: "", email: "" });
+  const [dto, setDto] = useState<CustomerDto>({ name: "", email: "" });
   const { addError } = useAPIError();
   const [validated, setValidated] = useState(false);
 

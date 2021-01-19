@@ -9,6 +9,11 @@ export type Customer = {
   email: string;
 };
 
+export type CustomerDto = {
+  name: string;
+  email: string;
+};
+
 export const GET_CUSTOMERS = gql`
   query GET_CUSTOMERS {
     getCustomers {
