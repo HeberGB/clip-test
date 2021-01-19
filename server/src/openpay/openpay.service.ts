@@ -25,4 +25,15 @@ export class OpenpayService {
       });
     });
   }
+
+  async updateOPCustomer(id: string, dto: CustomerDto): Promise<Customer> {
+    return new Promise((resolve, reject) => {
+      this.openpay.customers.update(id, dto, (error, body) => {
+        if (error) {
+          reject(error);
+        }
+        resolve(body);
+      });
+    });
+  }
 }

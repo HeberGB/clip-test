@@ -11,4 +11,12 @@ export class CustomerResolver {
   async createCustomer(@Args('dto') dto: CustomerDto): Promise<Customer> {
     return this.customerService.create(dto);
   }
+
+  @Mutation()
+  async updateCustomer(
+    @Args('id') id: string,
+    @Args('dto') dto: CustomerDto,
+  ): Promise<Customer> {
+    return this.customerService.update(id, dto);
+  }
 }

@@ -23,4 +23,12 @@ export class CustomerService {
       await createdCustomer.deleteOne();
     }
   }
+
+  async update(id: string, dto: CustomerDto): Promise<Customer> {
+    const updated = await this.customerModel
+      .findByIdAndUpdate(id, dto, { new: true })
+      .exec();
+    await this.openpayService.updateOPCustomer(updated.opId, dto);
+    return updated;
+  }
 }
