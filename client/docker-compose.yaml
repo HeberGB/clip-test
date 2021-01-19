@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  client:
+    image: node:14.15.4-alpine3.10
+    container_name: clip_client
+    volumes:
+      - ./:/home/node/app/
+    working_dir: /home/node/app/
+    ports:
+      - "8002:3000"
+    command: /bin/sh -c "npm i && npm run start"
