@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 import NotFound from "./layouts/NotFound";
 import { APIErrorProvider } from "./providers/APIErrorProvider";
 import APIErrorNotification from "./components/APIErrorNotification";
+import Customers from "./layouts/Customers";
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_GQL_URL,
@@ -23,6 +24,7 @@ function App() {
         <Router>
           <Container fluid>
             <Switch>
+              <Route exact path="/customers" component={Customers} />
               <Route exact path="*" component={NotFound} />
             </Switch>
           </Container>
