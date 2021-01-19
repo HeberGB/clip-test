@@ -2,18 +2,16 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import NotFound from "./layouts/NotFound";
+import { APIErrorProvider } from "./providers/APIErrorProvider";
+import APIErrorNotification from "./components/APIErrorNotification";
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_GQL_URL,
   cache: new InMemoryCache(),
   defaultOptions: {
     watchQuery: {
-      fetchPolicy: "no-cache",
+      fetchPolicy: "cache-and-network",
       errorPolicy: "ignore",
-    },
-    query: {
-      fetchPolicy: "no-cache",
-      errorPolicy: "all",
     },
   },
 });
@@ -21,13 +19,16 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <Container fluid style={{ height: "100%" }}>
-          <Switch>
-            <Route exact path="*" component={NotFound} />
-          </Switch>
-        </Container>
-      </Router>
+      <APIErrorProvider>
+        <Router>
+          <Container fluid>
+            <Switch>
+              <Route exact path="*" component={NotFound} />
+            </Switch>
+          </Container>
+        </Router>
+        <APIErrorNotification />
+      </APIErrorProvider>
     </ApolloProvider>
   );
 }
