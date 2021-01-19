@@ -19,5 +19,5 @@ type Mutation {
 
 type Query {
   getCustomers: [Customer]
-  getCustomerById(id: String!): Customer
+  getCustomerById(id: ID!): Customer
 }
