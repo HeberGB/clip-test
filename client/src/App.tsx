@@ -24,7 +24,7 @@ function App() {
         <Router>
           <Container fluid>
             <Switch>
-              <Route exact path="/customers" component={Customers} />
+              <Route exact path="/" component={Customers} />
               <Route exact path="*" component={NotFound} />
             </Switch>
           </Container>
