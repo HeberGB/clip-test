@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { OpenpayService } from 'src/openpay/openpay.service';
+import { OpenpayService } from '../openpay/openpay.service';
 import { CustomerDto } from './customer.dto';
 import { Customer, CustomerDocument } from './customer.entity';
 
