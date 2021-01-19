@@ -6,7 +6,7 @@ export type CustomerDocument = Customer & Document;
 
 @Schema({ timestamps: true })
 export class Customer implements ICustomer {
-  @Prop({ unique: true, required: true })
+  @Prop({ unique: true })
   opId: string;
 
   @Prop({ required: true })
