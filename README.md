@@ -1,45 +1,47 @@
 ## FULLSTACK SKILLS ASSESSMENT PROJECT
 
-For this evaluation you will be create two projects with **JavaScript** one of them a **React Application** and other a **NodeJS API** with express.
-
-**It must be production quality according to your understanding of it: testing, readme.MD etc.**
-
-The project will do to the next way, will a web applicattion that show a list of customer's registered in *OpenPay Sandbox* and additional will register more customer's. You will need use the *SDK OpenPay* to connect with the sandbox environment. All the front application will be you consideration, if you want use any framework CSS, will be considerer a plus for the assessment.
-
-**Additional:** In this assessment we don't force to use a database, but if you want save the information using a database, it's perfect.
+Whole project was developing on docker so you need to install [docker](https://docs.docker.com/engine/install/ubuntu/) and [docker-compose](https://docs.docker.com/compose/install/). To this project I'm considering that you can [manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/).
 
 ### Front Application
 
-You will be considerer the next views
+To run web client please execute de next command
 
-* List of customer's
-* Form to register customer
-* Form tu update customer
+```sh
+cd client
+docker-compose up
+```
 
 ### Backend Application
 
-* Service to get customer's
-* Service to create a new customer
-* Service to update a customer
+To run graphql api server please execute de next command
 
-### OpenPay Sandbox
-[https://sandbox-dashboard.openpay.mx/login](https://sandbox-dashboard.openpay.mx/login)
+```sh
+cd server
+docker-compose up
+```
 
-### OpenPay SDK NodeJs
-[https://github.com/open-pay/openpay-node](https://github.com/open-pay/openpay-node)
+### FAQ
 
-### Bonus -- EXECUTE A CHARGE
-This is not required, it is just a bonus, if you have time go ahead :)
+- How do I deattach my terminal to container?
 
-You can execute a charge to a customer registered into the list.
+  Add `-d` parameter to `docker-compose` command ex: `docker-compose -d`
 
-## FINAL CONSIDERATIONS
-Please write this application using ReactJs and NodeJS. You are free to implement this however you’d like with whatever resources or 3rd party code you’d want.
+- Is it right if bootstrap time is taking too much time?
 
-**Deadline**: We expect you to get back to us with the solution in 7 days. It won't be better if you delivery before, so if you finish early, improve your code. Finally, don't rush, if you need more time please ask us whenever you need.
+  The first time that you bootstrap the app it's completely normal and also if you are stuck in this step, you need to save any file to activate the hot-reload
 
-Create a private project in GitHub and share with us your code.
+```sh
+[11:14:20 PM] File change detected. Starting incremental compilation...
 
-The repo should have your name, for example **"_pardock-clip-test-challenge"**, it will help us to identify your test.
+[11:14:20 PM] Found 0 errors. Watching for file changes.
 
-Feel free to ask questions at any time (jose.dominguez@payclip.com).
+```
+
+- How can I watch the logs?
+
+  The command to watch the logs is `docker logs <container_name>` also you can add follow instruction like `docker logs -f <container_name>` for these services the commands are
+
+  ```sh
+  docker logs -f clip_client
+  docker logs -f clip_server
+  ```
